@@ -55,7 +55,7 @@ class Tools:
 
 if __name__ == "__main__":
     tools = Tools()
-    time_ini = "2024-06-01T09:00:00Z"
-    time_end = "2024-06-01T10:00:00Z"   
+    time_ini = "2026-10-15T09:00:00-03:00"
+    time_end = "2026-10-15T10:00:00-03:00"   
     result = tools.check_availability(time_ini, time_end)
     print(result)
