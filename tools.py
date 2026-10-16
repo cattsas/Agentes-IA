@@ -53,6 +53,27 @@ class Tools:
             "is_available": len(busy) == 0
         }
 
+    def create_event(self, summary:str, start:str, end:str, description:str=""):
+        print(f"Creating event: {summary} from {start} to {end},{description}")
+        service = self.get_calendar_service()
+        event = {
+            "summary": summary,
+            "description": description,
+            "start": {"dateTime": start},
+            "end": {"dateTime": end}
+        }
+        created=service.events().insert(calendarId="primary", body=event).execute()
+
+        return {
+            "calendar_id": "primary",
+            "event_id": created.get("id"),
+            "summary": created.get("summary"),
+            "start": created.get("start"),
+            "end": created.get("end"),
+            
+        }
+        
+
 if __name__ == "__main__":
     tools = Tools()
     time_ini = "2026-10-15T09:00:00-03:00"
