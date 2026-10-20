@@ -16,12 +16,12 @@ api_key = os.environ.get("GROQ_API_KEY")  # Get the API key from environment var
 client = Groq(api_key=api_key)  # Initialize the Groq client with the API key
 memory=SimpleMemory(max_messages=MEMORY_MAX_MSG)  # Initialize memory with a maximum of 5 messages
 now = datetime.now(ZoneInfo("America/Argentina/Buenos_Aires"))  # Get the current time in Buenos Aires timezone
-SYSTEM_PROMPT = f"""Eres un asistente útil y amigable. Responde de manera concisa y clara." \
+SYSTEM_PROMPT = f"""Eres un asistente útil y amigable. Responde de manera concisa y clara." 
                 Si no sabes la respuesta, di 'No sé'.
-Fecha y hora actual:{now.strftime("%Y-%m-%d %H:%M:%S")} (UTC-3, hora local).
+                Fecha y hora actual:{now.strftime("%Y-%m-%d %H:%M:%S")} (UTC-3, hora local).
 
-Reglas: Siempre que el usuario te pida crear un evento o consultar disponibilidad, debes usar las herramientas de Google Calendar que tienes disponibles.
-        Antes de crear el evento, pedir confirmacion al usuario. Si no confirma, no crear el evento.
+                Reglas: Siempre que el usuario te pida crear un evento o consultar disponibilidad, debes usar las herramientas de Google Calendar que tienes disponibles.
+                        Antes de crear el evento, pedir confirmacion al usuario. Si no confirma, no crear el evento.
 """
 TOOLS = [{
     "type":"function",
